@@ -8,7 +8,7 @@ use Exception;
 use Klein\Request;
 use Klein\Response;
 
-class PruebaController
+class AlumnoController
 {
     protected $alumnoservice;
 

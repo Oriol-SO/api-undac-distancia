@@ -1,6 +1,6 @@
 <?php
 
-use App\HTTP\Controllers\PruebaController;
+use App\HTTP\Controllers\AlumnoController;
 use Klein\Klein;
 //use App\HTTP\Controllers\PruebaController;
 
@@ -40,7 +40,7 @@ function invoke($class){
 }
 
 $klein->respond('GET','/[:codigo]',function ($req,$res) {
-    return invoke(PruebaController::class)->prueba($req,$res);
+    return invoke(AlumnoController::class)->prueba($req,$res);
 });
 
 
