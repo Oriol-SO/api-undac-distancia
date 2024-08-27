@@ -39,7 +39,7 @@ function invoke($class){
     }
 }
 
-$klein->respond('GET','/[:codigo]',function ($req,$res) {
+$klein->respond('GET','/api/search/[:codigo]',function ($req,$res) {
     return invoke(AlumnoController::class)->prueba($req,$res);
 });
 
