@@ -2,12 +2,9 @@
 
 use App\HTTP\Controllers\AlumnoController;
 use Klein\Klein;
-//use App\HTTP\Controllers\PruebaController;
 
 $klein = new Klein();
 
-
-// Middleware para manejar encabezados CORS
 $klein->respond(function ($request, $response) {
     // Configuración de encabezados CORS
     $response->header('Access-Control-Allow-Origin', '*');
@@ -42,23 +39,5 @@ function invoke($class){
 $klein->respond('GET','/api/search/[:codigo]',function ($req,$res) {
     return invoke(AlumnoController::class)->prueba($req,$res);
 });
-
-
-
-/*
-// Ruta para obtener todos los usuarios
-$klein->respond('GET', '/users', [UserController::class, 'getAllUsers']);
-
-// Ruta para obtener un usuario por ID
-$klein->respond('GET', '/users/[i:id]', [UserController::class, 'getUserById']);
-
-// Ruta para crear un nuevo usuario
-$klein->respond('POST', '/users', [UserController::class, 'createUser']);
-
-// Ruta para actualizar un usuario por ID
-$klein->respond('PUT', '/users/[i:id]', [UserController::class, 'updateUser']);
-
-// Ruta para eliminar un usuario por ID
-$klein->respond('DELETE', '/users/[i:id]', [UserController::class, 'deleteUser']);*/
 
 return $klein;
