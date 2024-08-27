@@ -1,0 +1,13 @@
+/vendor/
+
+# Ignorar archivos de caché y logs
+*.log
+*.cache
+*.tmp
+
+# Ignorar archivos generados automáticamente
+composer.lock
+composer.phar
+
+# Ignorar archivos de entorno
+.env

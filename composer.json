@@ -1,0 +1,26 @@
+{
+    "name": "oriol-simon/api-distancia",
+    "description": "router fazt for distance users from UNDAC",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\HTTP\\Controllers\\": "App/HTTP/controllers/",
+            "App\\Services\\": "App/services/",
+            "App\\repository\\": "App/repository/",
+            "App\\entities\\": "App/entities/",
+            "App\\config\\": "App/config/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oriol Simon",
+            "email": "oriolsimon1804@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "klein/klein": "^2.1",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
