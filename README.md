@@ -1,5 +1,7 @@
-#install 
-"composer install" or "composer update"
+# install project
+- composer install
+or
+- composer udate
 
-#exec
-php -S localhost:8000 
+# exec project
+- php -S localhost:8000 
