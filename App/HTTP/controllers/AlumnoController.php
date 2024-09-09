@@ -16,13 +16,12 @@ class AlumnoController
     {
         $this->alumnoservice = new AlumnoService();
     }
-    
-    public function prueba(Request $request,Response $response){
+
+    public function getAlumno(Request $request,Response $response){
         try{
-            $codigo=intval($request->codigo);
+            $codigo=$request->codigo;
             $res=$this->alumnoservice->findByCodigo($codigo);
             return $response->json($res) ;
-            return $response->json(['message' => 'hola mundo']);
         }catch(Exception $e){
             $response->code(400);
             return $response->json(['message'=>$e->getMessage()]);

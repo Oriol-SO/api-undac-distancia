@@ -18,7 +18,7 @@ $klein->respond(function ($request, $response) {
         $response->send();
         exit;
     }
-    
+
 });
 
 /*
@@ -36,8 +36,8 @@ function invoke($class){
     }
 }
 
-$klein->respond('GET','/api/search/[:codigo]',function ($req,$res) {
-    return invoke(AlumnoController::class)->prueba($req,$res);
+$klein->respond('GET','/api/alumno/[:codigo]',function ($req,$res) {
+    return invoke(AlumnoController::class)->getAlumno($req,$res);
 });
 
 return $klein;

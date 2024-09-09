@@ -8,33 +8,24 @@ use PDOException;
 
 class Query{
 
-    private $db;
-
-    function __construct($db = "track"){
-        $this->db = $db;
+    function __construct(){
     }
 
     function Exec( $function, $sp = false){
 
-        // Abrimos la conexión
-        $stmt = conexion::conect($this->db);
-
-        // Iniciamos la transacción
-
-        $stmt->beginTransaction();
+        $stmt = conexion::conect(); // Abrimos la conexión
+        $stmt->beginTransaction(); // Iniciamos la transacción
         try {
-            // Ejecutamos la función que contiene la consulta preparada
-            $result = $function($stmt);
 
-            // Confirmamos la transacción
-            if (!$sp) {
+            $result = $function($stmt); // Ejecutamos la función que contiene la consulta preparada
+
+            if (!$sp) { // Confirmamos la transacción
                 $stmt->commit();
-            };
+            }
 
-            // Cerramos la conexión
-            Conexion::close($stmt);
-            // Retornamos el resultado
+            Conexion::close($stmt); // Cerramos la conexión
             return $result;
+
         } catch (PDOException $ex) {
             // Si hay algún error, deshacemos la transacción
             $stmt->rollBack();
