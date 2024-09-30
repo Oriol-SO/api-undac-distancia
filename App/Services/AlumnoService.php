@@ -18,12 +18,13 @@ class AlumnoService{
         $response = $this->getDataApi($codigo);
         if (count($response)<3){
             $response = $this->repository->findByCodigo($codigo);
+            if (empty($response)) throw new Exception("Usuario no encontrado", 409);
             $idCurricula = $this->repository->getCurricula($codigo);
             $creditos = $this->repository->getTotalCreditos($idCurricula, $response[0]["espe"]);
             if (count($response)>1) throw new Exception("Usuario con más de una especialidad", 409);
             $response = $this->constructResponse($response, $codigo, $idCurricula, $creditos);
         }
-        return  empty($response) ? throw new Exception("Usuario no encontrado", 409) : $response;
+        return $response;
     }
 
     private function getDataApi($codigo) {
@@ -61,7 +62,7 @@ class AlumnoService{
 
         $response['Apellido Paterno'] = explode(" ", $nombres[0])[0];
         $response['Apellido Materno'] = explode(" ", $nombres[0])[1];
-        $response['Nombres'] = $nombres[1];
+        $response['Nombres'] = trim($nombres[1]);
         $response['Correo Institucional'] = $codigo."@undac.edu.pe";
         $response['Dni'] = $codigo;
         $response['Fecha de Ingreso'] = $fechaIngreso;
